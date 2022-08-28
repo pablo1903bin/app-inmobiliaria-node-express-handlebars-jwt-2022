@@ -1,0 +1,17 @@
+body {
+      background: #ffe259;
+      background: linear-gradient(to right, #ffa751, #ffe259);
+    }
+    .yo {
+      font-size: 30px;
+    
+      color: #d6ddf8;
+    }
+    .nav1 {
+      font-size: 20px;
+      margin-left: auto;
+    }
+    .navbar2 {
+      border-radius: 10px;
+    }
+ 
