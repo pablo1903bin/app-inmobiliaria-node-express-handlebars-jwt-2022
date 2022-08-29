@@ -16,6 +16,7 @@ import {
 } from "../Midleware/midlewareUserAuth/validatorAuth.js";
 
 const router = Router();
+
 //Ruta de la vista de login
 router.get("/login", formularioLogin);
 
