@@ -31,8 +31,9 @@ try {
 //
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
+
 //Routing de primer nivel
-app.use("/auth", routerUsuario);
+app.use("/api/v1/auth", routerUsuario);
 
 //Configurando un motor de plantilla de handelbars
 app.engine(
