@@ -3,9 +3,7 @@ import dotenv from "dotenv";
 dotenv.config({ path: ".env" });
 
 const db = new Sequelize(
-  process.env.inmobiliaria, //Nombre de la base de datos
-  process.env.root, //Nombre de usuario de la db
-  process.env.supernova, //Contraseña del usuario
+  process.env.BD_NOMBRE, process.env.DB_USER, process.env.DB_PASS,
   {
     host: "localhost",
     port: "3306",

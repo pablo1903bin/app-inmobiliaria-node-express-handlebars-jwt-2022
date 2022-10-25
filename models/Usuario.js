@@ -5,8 +5,9 @@ import { DataTypes } from "sequelize";
 import db from "../config/db.js";
 //const sequelize = new Sequelize();
 
-//Definir un nuevo modelo
+//Definir un nuevo modelo esta es la forma
 const Usuario = db.define("usuarios", {
+  //Configuracion con las diferentes columnas k va a tener este usuario
   //Creando columna Nombre
   nombre: {
     type: DataTypes.STRING,

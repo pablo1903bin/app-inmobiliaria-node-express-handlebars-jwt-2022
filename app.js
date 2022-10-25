@@ -8,9 +8,12 @@ import { dirname } from "path";
 import routerUsuario from "./routes/usuarioLoginRoutes.js";
 import db from "./config/db.js";
 
+
 const app = express();
 //Configuraciones para node
-app.set("port", process.env.PORT || 6000);
+app.set("port", process.env.PORT || 4000);
+
+
 
 //Sirviendo archivos estaticos
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +35,7 @@ try {
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 
-//Routing de primer nivel
+//Rutas de primer nivel
 app.use("/api/v1/auth", routerUsuario);
 
 //Configurando un motor de plantilla de handelbars
@@ -45,8 +48,11 @@ app.engine(
     extname: ".hbs",
   })
 );
+
 app.set("view engine", ".hbs");
 //Soportar datos desde un formulario
 app.use(express.urlencoded({ extended: false }));
 
 export default app;
+
+
