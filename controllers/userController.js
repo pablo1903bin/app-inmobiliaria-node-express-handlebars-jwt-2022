@@ -1,5 +1,5 @@
 import Usuario from "../models/Usuario.js";
-
+import { generateId } from "../helpers/tokens.js";
 //GET Devuelve formuario de login ala vista es mi pagina principal
 const formularioLogin = (req, res) => {
   res.render("auth/login", {
@@ -27,26 +27,30 @@ const formularioRegistro = (req, res) => {
   });
 };
 
-//POST  Resibiendo datos del formulario para persistir datos de la vista 
+//POST  Resibiendo datos del formulario para persistir datos de la vista
 //aqui terminan mis datos del formulario se guardan
 const registrar = async (req, res) => {
   //Validar que si el usuario existe
-  //const {nombre email, password} = req.body//esyo es destructuring
- const existeUsuario = await Usuario.findOne({where:{email:req.body.email}});
+  const { nombre, email, password } = req.body; //esyo es destructuring
+  const existeUsuario = await Usuario.findOne({ where: { email: email } });
 
- if(existeUsuario){
-  return res.render("auth/registro", {
-    pagina: "Crear cuenta",
-    errores: [{msg: 'Este usuario ya esta registrado'}],
-    usuario: {
-      nombre: req.body.nombre,
-      email: req.body.email,
-    },
+  if (existeUsuario) {
+    return res.render("auth/registro", {
+      pagina: "Crear cuenta",
+      errores: [{ msg: "Este usuario ya esta registrado" }],
+      usuario: {
+        nombre: req.body.nombre,
+        email: req.body.email,
+      },
+    });
+  }
+  //const {nombre, email, password ,token} = req.body;
+  const usuario = await Usuario.create({
+    nombre,
+    email,
+    password,
+    token: generateId(),
   });
- }
-
-
-  const usuario = await Usuario.create(req.body);
   res.json(usuario);
 };
 

@@ -1,6 +1,5 @@
 import { body, validationResult, check } from "express-validator";
 
-
 //Si todo lo k resibido es bien valido  pasara al siguiente codigo con next
 //esta validacion me dira el resultado de la validacion
 const validationResultExpress = (req, res, next) => {
